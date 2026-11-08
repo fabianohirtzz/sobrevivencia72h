@@ -5,3 +5,4 @@ privado/produtos/
 .DS_Store
 .qa/
 .playwright-mcp/
+__pycache__/
