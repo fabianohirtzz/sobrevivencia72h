@@ -1,0 +1,7 @@
+privado/config.php
+privado/pedidos/
+privado/produtos/
+*.log
+.DS_Store
+.qa/
+.playwright-mcp/

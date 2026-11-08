@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /download.php
+Disallow: /obrigado.html
+
+Sitemap: https://sobrevivencia72h.com.br/sitemap.xml
