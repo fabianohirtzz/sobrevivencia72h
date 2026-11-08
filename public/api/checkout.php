@@ -1,6 +1,6 @@
 <?php
 /* Recebe o formulário, cria cliente e cobrança no Asaas e devolve o link da fatura (Pix, cartão ou boleto). */
-require __DIR__ . '/../../privado/lib.php';
+require (static function () { foreach ([__DIR__ . '/../../privado/lib.php', __DIR__ . '/../privado/lib.php'] as $f) if (is_file($f)) return $f; http_response_code(500); exit('config'); })();
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') json_saida(['erro' => 'Método não permitido.'], 405);
 
 $d = json_decode((string) file_get_contents('php://input'), true) ?: [];
@@ -30,7 +30,7 @@ try {
         'name' => $nome, 'cpfCnpj' => $cpf, 'email' => $email, 'mobilePhone' => $cel ?: null,
         'notificationDisabled' => true, 'externalReference' => $ref,
     ], fn($v) => $v !== null));
-    $pag = asaas('POST', '/payments', [
+    $cobranca = [
         'customer'          => $cli['id'],
         'billingType'       => 'UNDEFINED',
         'value'             => $o['preco'],
@@ -38,7 +38,14 @@ try {
         'description'       => '72 Horas: O Manual da Família Preparada + 3 bônus (PDF)',
         'externalReference' => $ref,
         'callback'          => ['successUrl' => rtrim((string) cfg('SITE_URL'), '/') . '/obrigado.html', 'autoRedirect' => true],
-    ]);
+    ];
+    try {
+        $pag = asaas('POST', '/payments', $cobranca);
+    } catch (RuntimeException $e) {
+        // Sem domínio cadastrado no Asaas, o redirecionamento é recusado: gera a cobrança sem ele.
+        unset($cobranca['callback']);
+        $pag = asaas('POST', '/payments', $cobranca);
+    }
 } catch (Throwable $e) {
     json_saida(['erro' => 'Não foi possível gerar o pagamento agora. Tente de novo em instantes ou chame no WhatsApp (48) 99165-7775.'], 502);
 }

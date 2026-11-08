@@ -1,6 +1,6 @@
 <?php
 /* Página de download protegida: link assinado e com validade; os PDFs ficam fora do public_html. */
-require __DIR__ . '/../privado/lib.php';
+require (static function () { foreach ([__DIR__ . '/../privado/lib.php', __DIR__ . '/privado/lib.php'] as $f) if (is_file($f)) return $f; http_response_code(500); exit('config'); })();
 header('X-Robots-Tag: noindex, nofollow');
 
 $t = (string) ($_GET['t'] ?? '');

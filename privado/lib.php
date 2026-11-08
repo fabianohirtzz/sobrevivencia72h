@@ -22,6 +22,7 @@ function registra(string $msg): void {
 
 /* ---------- oferta com prazo real ---------- */
 function oferta(): array {
+    if (cfg('PRE_LANCAMENTO')) return ['ativa' => true, 'preco' => (float) cfg('PRECO_OFERTA'), 'fim' => null];
     $fim = strtotime((string) cfg('OFERTA_FIM', '')) ?: null;
     $ativa = $fim && time() < $fim;
     $preco = $ativa ? (float) cfg('PRECO_OFERTA') : (float) cfg('PRECO_CHEIO');
@@ -108,7 +109,7 @@ function email_envia(string $para, string $assunto, string $html, string $texto)
         . "--$limite\r\nContent-Type: text/html; charset=UTF-8\r\nContent-Transfer-Encoding: base64\r\n\r\n" . chunk_split(base64_encode($html))
         . "--$limite--\r\n";
     $assuntoCod = '=?UTF-8?B?' . base64_encode($assunto) . '?=';
-    if (!cfg('SMTP_HOST')) return mail($para, $assuntoCod, $corpo, implode("\r\n", $cab));
+    if (!cfg('SMTP_HOST')) return @mail($para, $assuntoCod, $corpo, implode("\r\n", $cab));
     try {
         $s = stream_socket_client('ssl://' . cfg('SMTP_HOST') . ':' . cfg('SMTP_PORTA', 465), $en, $es, 20);
         if (!$s) throw new RuntimeException("conexão SMTP: $es");

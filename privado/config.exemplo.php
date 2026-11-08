@@ -9,6 +9,7 @@ return [
     // ---------- Oferta (prazo REAL: depois do fim, a página e o checkout cobram o preço cheio)
     'PRECO_OFERTA' => 39.90,
     'PRECO_CHEIO'  => 59.90,
+    'PRE_LANCAMENTO' => true,                    // true = preço de oferta SEM contador (antes do lançamento)
     'OFERTA_FIM'   => '2026-11-10 20:00:00',       // no lançamento: data/hora do lançamento + 72h (horário de Brasília)
 
     // ---------- Site e entrega

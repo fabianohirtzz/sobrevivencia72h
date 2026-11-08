@@ -2,7 +2,7 @@
 /* Webhook do Asaas: libera e envia o produto quando o pagamento é confirmado; bloqueia em estorno.
    Configurar no Asaas: URL https://sobrevivencia72h.com.br/api/asaas-webhook.php, token = ASAAS_WEBHOOK_TOKEN,
    eventos PAYMENT_CONFIRMED, PAYMENT_RECEIVED, PAYMENT_REFUNDED, PAYMENT_CHARGEBACK_REQUESTED. */
-require __DIR__ . '/../../privado/lib.php';
+require (static function () { foreach ([__DIR__ . '/../../privado/lib.php', __DIR__ . '/../privado/lib.php'] as $f) if (is_file($f)) return $f; http_response_code(500); exit('config'); })();
 
 $token = $_SERVER['HTTP_ASAAS_ACCESS_TOKEN'] ?? '';
 if (!hash_equals((string) cfg('ASAAS_WEBHOOK_TOKEN'), (string) $token)) {
