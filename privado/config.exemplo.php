@@ -24,7 +24,7 @@ return [
     'SMTP_USER'  => 'contato@sobrevivencia72h.com.br',
     'SMTP_SENHA' => '',
     'EMAIL_DE'   => 'contato@sobrevivencia72h.com.br',
-    'EMAIL_NOME' => '72 Horas · Manual da Família Preparada',
-    'EMAIL_RESPOSTA' => 'sobrevivencia72h@gmail.com',
+    'EMAIL_NOME' => '72 Horas',
+    'EMAIL_RESPOSTA' => 'contato@sobrevivencia72h.com.br',
     'EMAIL_AVISO'    => 'sobrevivencia72h@gmail.com', // recebe aviso de cada venda
 ];

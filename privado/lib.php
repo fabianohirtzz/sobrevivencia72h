@@ -148,8 +148,10 @@ function email_entrega(array $pedido): bool {
         . '<p style="font-size:14px">O link vale por ' . (int) cfg('DIAS_DOWNLOAD', 30) . ' dias. Baixe os 4 arquivos e guarde uma cópia no celular e outra impressa.</p>'
         . '<p style="font-size:14px"><strong>Por onde começar:</strong> leia a Abertura e faça a primeira caixa "Faça agora" ainda hoje. Leva 2 minutos.</p>'
         . '<p style="font-size:13px;color:#6f6a61">Dúvidas: responda este e-mail ou chame no WhatsApp (48) 99165-7775.<br>Garantia de 7 dias: se não gostar, devolvemos 100% do valor.</p>'
-        . '</div></div>';
+        . '</div><p style="font-size:11px;color:#a39c90;text-align:center;margin:16px 8px">Você recebeu este e-mail porque comprou o manual 72 Horas em sobrevivencia72h.com.br.<br>'
+        . 'F&amp;F2 SOLUÇÕES LTDA (Freela In Home) · CNPJ 31.703.023/0001-96</p></div>';
     $texto = "Olá, $nome!\n\nSeu pagamento foi confirmado. Baixe o manual e os 3 bônus aqui:\n$link\n\nO link vale por "
-        . (int) cfg('DIAS_DOWNLOAD', 30) . " dias.\nDúvidas: sobrevivencia72h@gmail.com ou WhatsApp (48) 99165-7775.";
+        . (int) cfg('DIAS_DOWNLOAD', 30) . " dias.\nDúvidas: responda este e-mail ou WhatsApp (48) 99165-7775.\n\n"
+        . "Você recebeu este e-mail porque comprou o manual 72 Horas em sobrevivencia72h.com.br.\nF&F2 SOLUÇÕES LTDA (Freela In Home) · CNPJ 31.703.023/0001-96";
     return email_envia($pedido['email'], 'Seu manual 72 Horas chegou', $html, $texto);
 }
