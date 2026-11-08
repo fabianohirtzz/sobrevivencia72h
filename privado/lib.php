@@ -30,7 +30,10 @@ function oferta(): array {
 
 /* ---------- Asaas ---------- */
 function asaas(string $metodo, string $caminho, ?array $corpo = null): array {
-    $base = cfg('ASAAS_AMBIENTE') === 'producao' ? 'https://api.asaas.com/v3' : 'https://api-sandbox.asaas.com/v3';
+    // ambiente pela própria chave ($aact_prod_ = produção, $aact_hmlg_ = sandbox); senão, pelo config
+    $chave = (string) cfg('ASAAS_API_KEY');
+    $prod = strpos($chave, '$aact_prod_') === 0 || (strpos($chave, '$aact_hmlg_') !== 0 && cfg('ASAAS_AMBIENTE') === 'producao');
+    $base = $prod ? 'https://api.asaas.com/v3' : 'https://api-sandbox.asaas.com/v3';
     $ch = curl_init($base . $caminho);
     curl_setopt_array($ch, [
         CURLOPT_RETURNTRANSFER => true,
