@@ -37,7 +37,11 @@ try {
         'dueDate'           => date('Y-m-d', strtotime('+2 days')),
         'description'       => '72 Horas: O Manual da Família Preparada + 3 bônus (PDF)',
         'externalReference' => $ref,
-        'callback'          => ['successUrl' => rtrim((string) cfg('SITE_URL'), '/') . '/obrigado.html', 'autoRedirect' => true],
+        // zera o padrão da conta Asaas (desconto/juros/multa): o preço é sempre o valor exato da página
+        'discount'          => ['value' => 0, 'dueDateLimitDays' => 0, 'type' => 'FIXED'],
+        'interest'          => ['value' => 0],
+        'fine'              => ['value' => 0],
+        'callback'        => ['successUrl' => rtrim((string) cfg('SITE_URL'), '/') . '/obrigado.html', 'autoRedirect' => true],
     ];
     try {
         $pag = asaas('POST', '/payments', $cobranca);
