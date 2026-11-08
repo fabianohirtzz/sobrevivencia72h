@@ -42,5 +42,6 @@ recebe lançamento + 72h; depois disso página e checkout cobram R$ 59,90 de fat
   Asaas em PRODUÇÃO (webhook próprio criado; cobranças zeram desconto/juros/multa padrão da conta Freela). Compra real testada ok.
   E-mail de entrega via SMTP contato@ (SPF/DKIM/DMARC PASS; domínio novo ainda cai no spam, reputação em construção).
   Search Console verificado (meta tag) + sitemap; Bing importado do Google; IndexNow enviado (chave em public/<hex>.txt).
+- 2026-11-08 00:26: LANÇAMENTO. Countdown ligado, oferta R$ 39,90 até 2026-11-11 00:26 (Brasília); depois cobra R$ 59,90 sozinho.
 - PRÓXIMO: no aviso de lançamento, PRE_LANCAMENTO=false e OFERTA_FIM = lançamento + 72h em privado/config.php e publicar
   (`python deploy.py --so-config`, com FTP_SENHA no ambiente). Prévia noindex: branch gh-pages (GitHub Pages).

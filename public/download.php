@@ -30,7 +30,7 @@ if ($ok && isset($_GET['f'])) {
 <meta name="robots" content="noindex, nofollow">
 <title>Seus arquivos · 72 Horas</title>
 <link rel="icon" href="assets/img/logo-icone-fundo.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/css/site.css?v=1">
+<link rel="stylesheet" href="assets/css/site.css?v=2">
 </head>
 <body>
 <header class="topo"><div class="topo__barra"><a class="marca" href="./"><img src="assets/img/logo-horizontal-escuro.svg" alt="72 Horas" width="190" height="45"></a></div></header>

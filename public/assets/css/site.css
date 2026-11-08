@@ -122,8 +122,9 @@ strong { color: var(--tinta); }
 .progresso__barra span { display: block; height: 100%; width: 0; background: var(--laranja); transition: width .3s ease; }
 .progresso p { margin: 0; font-family: var(--f-mono); font-size: .85rem; font-weight: 600; color: var(--tinta); min-width: 9.5em; text-align: right; }
 .checklist { columns: 2 340px; column-gap: 20px; }
-.grupo { break-inside: avoid; border: 1px solid var(--linha); background: #fff; border-radius: var(--raio); padding: 18px 20px 12px; margin: 0 0 20px; }
-.grupo legend { font-family: var(--f-tit); font-weight: 900; font-size: 1.45rem; color: var(--tinta); padding: 0 .3em; }
+.grupo { break-inside: avoid; border: 1px solid var(--linha); background: #fff; border-radius: var(--raio); padding: 22px 22px 12px; margin: 0 0 20px; min-width: 0; }
+.grupo legend { float: left; width: 100%; font-family: var(--f-tit); font-weight: 900; font-size: 1.45rem; line-height: 1.1; color: var(--tinta); padding: 0 0 12px; margin: 0 0 4px; border-bottom: 2px solid var(--laranja-suave); }
+.grupo legend + * { clear: both; }
 .grupo label { display: flex; gap: 12px; align-items: flex-start; padding: 8px 0; border-top: 1px dashed var(--linha); cursor: pointer; font-size: .98rem; line-height: 1.45; }
 .grupo label:first-of-type { border-top: 0; }
 .grupo input { appearance: none; -webkit-appearance: none; flex: none; width: 22px; height: 22px; margin: 0; border: 2px solid var(--laranja); border-radius: 6px; display: grid; place-content: center; cursor: pointer; background: #fff; }
