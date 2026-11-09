@@ -245,12 +245,34 @@ ul { margin: 0; padding: 0; list-style: none; }
 (function () {
   'use strict';
   var box = document.getElementById('contador');
+  var urlParams = new URLSearchParams(window.location.search);
+  var promoHash = urlParams.get('p') || urlParams.get('promo') || '';
+  try {
+    if (promoHash) sessionStorage.setItem('s72_promo', promoHash);
+    else promoHash = sessionStorage.getItem('s72_promo') || '';
+  } catch (e) {}
+
+  // Propaga o parâmetro promocional nos links para a página de vendas
+  if (promoHash) {
+    var sufixo = (window.location.search ? '&' : '?') + 'p=' + encodeURIComponent(promoHash);
+    Array.prototype.forEach.call(document.querySelectorAll('a[href*="#oferta"]'), function (a) {
+      var partes = a.href.split('#');
+      var base = partes[0];
+      var hash = partes[1] ? '#' + partes[1] : '';
+      if (base.indexOf('p=') === -1) {
+        base += (base.indexOf('?') === -1 ? '?' : '&') + 'p=' + encodeURIComponent(promoHash);
+      }
+      a.href = base + hash;
+    });
+  }
+
   function preco(v) {
     Array.prototype.forEach.call(document.querySelectorAll('[data-preco]'), function (el) { el.textContent = v; });
     document.getElementById('preco-de').hidden = v === '59,90';
   }
   function dois(n) { return String(n).padStart(2, '0'); }
-  fetch('api/oferta.php', { cache: 'no-store' })
+  var ofertaUrl = 'api/oferta.php' + (promoHash ? '?p=' + encodeURIComponent(promoHash) : '');
+  fetch(ofertaUrl, { cache: 'no-store' })
     .then(function (r) { if (!r.ok) throw 0; return r.json(); })
     .then(function (d) {
       preco(String(d.preco).replace('.', ','));

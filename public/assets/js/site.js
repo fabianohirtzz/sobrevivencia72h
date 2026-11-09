@@ -36,7 +36,12 @@
   if ($('#calc')) calc();
 
   /* ---------- oferta: preço e prazo vêm do servidor (prazo real) ---------- */
-  var oferta = { preco: '39,90', fim: null };
+  var urlParams = new URLSearchParams(window.location.search);
+  var promoHash = urlParams.get('p') || urlParams.get('promo') || store.get('s72_promo') || '';
+  if (urlParams.get('p') || urlParams.get('promo')) {
+    store.set('s72_promo', promoHash);
+  }
+  var oferta = { preco: '39,90', fim: null, promo: false };
   function moeda(v) { return v.replace('.', ','); }
   function aplicaPreco() {
     $$('[data-preco]').forEach(function (el) { el.textContent = oferta.preco; });
@@ -50,7 +55,7 @@
     box.hidden = false;
     function tick() {
       var resta = Math.max(0, oferta.fim - Date.now());
-      if (resta <= 0) { box.hidden = true; oferta.preco = '59,90'; aplicaPreco(); return; }
+      if (resta <= 0) { box.hidden = true; oferta.preco = '59,90'; oferta.promo = false; aplicaPreco(); return; }
       var h = Math.floor(resta / 3600000), m = Math.floor(resta % 3600000 / 60000), s = Math.floor(resta % 60000 / 1000);
       $('#cd-h').textContent = String(h).padStart(2, '0');
       $('#cd-m').textContent = String(m).padStart(2, '0');
@@ -59,9 +64,16 @@
     }
     tick();
   }
-  fetch('api/oferta.php', { cache: 'no-store' })
+  var ofertaUrl = 'api/oferta.php' + (promoHash ? '?p=' + encodeURIComponent(promoHash) : '');
+  fetch(ofertaUrl, { cache: 'no-store' })
     .then(function (r) { if (!r.ok) throw 0; return r.json(); })
-    .then(function (d) { oferta.preco = moeda(d.preco); oferta.fim = d.fim ? d.fim * 1000 : null; aplicaPreco(); contador(); })
+    .then(function (d) {
+      oferta.preco = moeda(d.preco);
+      oferta.fim = d.fim ? d.fim * 1000 : null;
+      oferta.promo = !!d.promo;
+      aplicaPreco();
+      contador();
+    })
     .catch(function () { /* sem PHP (prévia): mantém o preço do HTML e esconde o contador */ });
 
   /* ---------- checkout ---------- */
@@ -105,6 +117,7 @@
     if (!cpfValido(d.cpf)) return falha('CPF inválido. Ele é exigido para emitir a cobrança.');
     var btn = $('button[type=submit]', form);
     btn.disabled = true;
+    if (promoHash) d.promo = promoHash;
     fetch('api/checkout.php', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(d) })
       .then(function (r) { return r.json().catch(function () { return {}; }); })
       .then(function (res) {

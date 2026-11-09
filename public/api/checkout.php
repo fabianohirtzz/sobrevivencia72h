@@ -23,7 +23,8 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) json_saida(['erro' => 'Confira o
 if (!cpf_ok($cpf)) json_saida(['erro' => 'CPF inválido.'], 422);
 if ($cel !== '' && (strlen($cel) < 10 || strlen($cel) > 11)) $cel = '';
 
-$o = oferta();
+$promo = isset($d['promo']) ? trim((string) $d['promo']) : null;
+$o = oferta($promo);
 $ref = bin2hex(random_bytes(10));
 try {
     $cli = asaas('POST', '/customers', array_filter([
@@ -57,7 +58,7 @@ try {
 pedido_grava([
     'ref' => $ref, 'criado' => date('c'), 'status' => 'aguardando',
     'nome' => $nome, 'email' => $email, 'cpf_final' => substr($cpf, -3), 'celular' => $cel,
-    'valor' => $o['preco'], 'asaas_cliente' => $cli['id'], 'asaas_pagamento' => $pag['id'],
+    'valor' => $o['preco'], 'promo' => $o['promo'], 'asaas_cliente' => $cli['id'], 'asaas_pagamento' => $pag['id'],
     'entregue' => false, 'downloads' => 0,
 ]);
 registra("PEDIDO $ref criado ({$o['preco']}) pagamento {$pag['id']}");

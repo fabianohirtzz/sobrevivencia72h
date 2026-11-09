@@ -21,12 +21,19 @@ function registra(string $msg): void {
 }
 
 /* ---------- oferta com prazo real ---------- */
-function oferta(): array {
-    if (cfg('PRE_LANCAMENTO')) return ['ativa' => true, 'preco' => (float) cfg('PRECO_OFERTA'), 'fim' => null];
+function oferta(?string $promo = null): array {
     $fim = strtotime((string) cfg('OFERTA_FIM', '')) ?: null;
-    $ativa = $fim && time() < $fim;
+    $ativa = cfg('PRE_LANCAMENTO') || ($fim && time() < $fim);
+    $preco_promo = (float) cfg('PRECO_PROMO', 29.90);
+    $hash_promo = (string) cfg('PROMO_HASH', '');
+
+    if ($ativa && $promo !== null && $hash_promo !== '' && hash_equals($hash_promo, $promo)) {
+        return ['ativa' => true, 'preco' => $preco_promo, 'fim' => $fim, 'promo' => true];
+    }
+
+    if (cfg('PRE_LANCAMENTO')) return ['ativa' => true, 'preco' => (float) cfg('PRECO_OFERTA'), 'fim' => null, 'promo' => false];
     $preco = $ativa ? (float) cfg('PRECO_OFERTA') : (float) cfg('PRECO_CHEIO');
-    return ['ativa' => $ativa, 'preco' => $preco, 'fim' => $ativa ? $fim : null];
+    return ['ativa' => $ativa, 'preco' => $preco, 'fim' => $ativa ? $fim : null, 'promo' => false];
 }
 
 /* ---------- Asaas ---------- */
