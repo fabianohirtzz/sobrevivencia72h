@@ -1,21 +1,18 @@
-"""Publica o site na Erehost por FTPS (certificado verificado).
-A raiz do FTP é a pasta pública do domínio: public/* vai para /, privado/* vai para /privado (bloqueada por .htaccess).
-Uso: set FTP_SENHA=... && python deploy.py [--so-config]
+"""Publica o site na Erehost por FTPS com reconexão por arquivo para evitar timeout de dados do firewall.
 """
-import ftplib, os, ssl, sys
+import ftplib, os, ssl, sys, time
 
-HOST = 'cpbr-sp3.erehost.com.br'          # nome do certificado do servidor
-USER = 'sobrev@sobrevivencia72h.com.br'
+HOST = 'cpbr-sp3.erehost.com.br'
+USER = 'sobre@sobrevivencia72h.com.br'
 HERE = os.path.dirname(os.path.abspath(__file__))
 IGNORAR = {'.git', '__pycache__', 'pedidos'}
 
-
 def conecta():
-    ftp = ftplib.FTP_TLS(HOST, context=ssl.create_default_context(), timeout=60)
+    ftp = ftplib.FTP_TLS(HOST, context=ssl.create_default_context(), timeout=30)
     ftp.login(USER, os.environ['FTP_SENHA'])
     ftp.prot_p()
+    ftp.set_pasv(True)
     return ftp
-
 
 def mkdirs(ftp, caminho):
     atual = ''
@@ -28,31 +25,57 @@ def mkdirs(ftp, caminho):
         except ftplib.error_perm:
             pass
 
+def envia_arquivo_com_retry(remoto_arqui, local_caminho, max_tentativas=3):
+    for tentativa in range(1, max_tentativas + 1):
+        try:
+            ftp = conecta()
+            with open(local_caminho, 'rb') as fh:
+                ftp.storbinary(f'STOR {remoto_arqui}', fh)
+            ftp.quit()
+            return True
+        except Exception as e:
+            print(f'Tentativa {tentativa} falhou para {remoto_arqui}: {e}')
+            time.sleep(2)
+    return False
 
-def envia_pasta(ftp, local, remoto):
-    n = 0
+def envia_pasta(local, remoto):
+    # Primeiro garante as pastas criadas
+    ftp = conecta()
     for raiz, dirs, arqs in os.walk(local):
         dirs[:] = [d for d in dirs if d not in IGNORAR]
         rel = os.path.relpath(raiz, local).replace('\\', '/')
         destino = remoto.rstrip('/') + ('' if rel == '.' else '/' + rel)
         mkdirs(ftp, destino)
+    ftp.quit()
+
+    n = 0
+    for raiz, dirs, arqs in os.walk(local):
+        dirs[:] = [d for d in dirs if d not in IGNORAR]
+        rel = os.path.relpath(raiz, local).replace('\\', '/')
+        destino = remoto.rstrip('/') + ('' if rel == '.' else '/' + rel)
         for a in arqs:
             if a.endswith('.log'):
                 continue
-            with open(os.path.join(raiz, a), 'rb') as fh:
-                ftp.storbinary(f'STOR {destino}/{a}', fh)
-            n += 1
+            local_arqui = os.path.join(raiz, a)
+            remoto_arqui = f'{destino}/{a}'
+            print(f'Enviando {remoto_arqui}...')
+            if envia_arquivo_com_retry(remoto_arqui, local_arqui):
+                n += 1
+            else:
+                print(f'ERRO CRÍTICO ao enviar {remoto_arqui}')
     return n
 
-
 if __name__ == '__main__':
-    ftp = conecta()
     if '--so-config' in sys.argv:
-        with open(os.path.join(HERE, 'privado', 'config.php'), 'rb') as fh:
-            ftp.storbinary('STOR /privado/config.php', fh)
-        print('config.php enviado')
+        envia_arquivo_com_retry('/privado/config.php', os.path.join(HERE, 'privado', 'config.php'))
+        print('config.php enviado com sucesso!')
     else:
-        print('public :', envia_pasta(ftp, os.path.join(HERE, 'public'), '/'), 'arquivos')
-        print('privado:', envia_pasta(ftp, os.path.join(HERE, 'privado'), '/privado'), 'arquivos')
+        print('Iniciando deploy...')
+        n_pub = envia_pasta(os.path.join(HERE, 'public'), '/')
+        print(f'public: {n_pub} arquivos enviados.')
+        n_priv = envia_pasta(os.path.join(HERE, 'privado'), '/privado')
+        print(f'privado: {n_priv} arquivos enviados.')
+        ftp = conecta()
         mkdirs(ftp, '/privado/pedidos')
-    ftp.quit()
+        ftp.quit()
+        print('Deploy finalizado com sucesso!')
