@@ -5,6 +5,8 @@ RewriteEngine On
 RewriteCond %{HTTPS} off [OR]
 RewriteCond %{HTTP_HOST} ^www\. [NC]
 RewriteRule ^ https://sobrevivencia72h.com.br%{REQUEST_URI} [L,R=301]
+# página de links da bio do Instagram: sobrevivencia72h.com.br/links
+RewriteRule ^links/?$ links.html [L]
 
 <IfModule mod_headers.c>
   Header always set X-Content-Type-Options "nosniff"

@@ -43,5 +43,7 @@ recebe lançamento + 72h; depois disso página e checkout cobram R$ 59,90 de fat
   E-mail de entrega via SMTP contato@ (SPF/DKIM/DMARC PASS; domínio novo ainda cai no spam, reputação em construção).
   Search Console verificado (meta tag) + sitemap; Bing importado do Google; IndexNow enviado (chave em public/<hex>.txt).
 - 2026-11-08 00:26: LANÇAMENTO. Countdown ligado, oferta R$ 39,90 até 2026-11-11 00:26 (Brasília); depois cobra R$ 59,90 sozinho.
+- 2026-11-09 14:06: countdown REINICIADO (nova janela de 72h): OFERTA_FIM = 2026-11-12 14:06. Criada `public/links.html`
+  (link da bio do Instagram, URL /links, noindex): resumo, mesmo contador real via api/oferta.php, botão "Quero o manual" para /#oferta (UTM instagram/bio).
 - PRÓXIMO: no aviso de lançamento, PRE_LANCAMENTO=false e OFERTA_FIM = lançamento + 72h em privado/config.php e publicar
   (`python deploy.py --so-config`, com FTP_SENHA no ambiente). Prévia noindex: branch gh-pages (GitHub Pages).
