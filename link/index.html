@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Link · 72 Horas: O Manual da Família Preparada</title>
+<meta name="description" content="O manual que ensina sua família a montar o kit de emergência de 72 horas recomendado pela Defesa Civil e o que fazer em cada hora de um apagão ou enchente.">
+<!-- noindex: página de destino da bio do Instagram, conteúdo curto e repetido do site.
+     Indexar só criaria concorrência com a home. -->
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://sobrevivencia72h.com.br/">
+<meta name="theme-color" content="#F7F3EC">
+<link rel="icon" href="assets/img/logo-icone-fundo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/icone-512.png">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="72 Horas · O Manual da Família Preparada">
+<meta property="og:description" content="Kit de emergência de 72 horas: o que ter em casa e o que fazer, hora por hora.">
+<meta property="og:url" content="https://sobrevivencia72h.com.br/link">
+<meta property="og:image" content="https://sobrevivencia72h.com.br/assets/img/og-imagem.png">
+<link rel="preload" href="assets/fonts/BigShouldersDisplay-Black.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/IBMPlexSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face { font-family: 'Big Shoulders Display'; font-weight: 900; font-display: swap; src: url(assets/fonts/BigShouldersDisplay-Black.woff2) format('woff2'); }
+@font-face { font-family: 'Big Shoulders Display'; font-weight: 800; font-display: swap; src: url(assets/fonts/BigShouldersDisplay-ExtraBold.woff2) format('woff2'); }
+@font-face { font-family: 'IBM Plex Sans'; font-weight: 400; font-display: swap; src: url(assets/fonts/IBMPlexSans-Regular.woff2) format('woff2'); }
+@font-face { font-family: 'IBM Plex Sans'; font-weight: 600; font-display: swap; src: url(assets/fonts/IBMPlexSans-SemiBold.woff2) format('woff2'); }
+@font-face { font-family: 'IBM Plex Sans'; font-weight: 700; font-display: swap; src: url(assets/fonts/IBMPlexSans-Bold.woff2) format('woff2'); }
+@font-face { font-family: 'IBM Plex Mono'; font-weight: 600; font-display: swap; src: url(assets/fonts/IBMPlexMono-SemiBold.woff2) format('woff2'); }
+:root {
+  --tinta: #161513; --tinta2: #2b2926; --creme: #f7f3ec; --creme2: #eee7db; --branco: #fff;
+  --linha: rgba(22,21,19,.12); --muted: #6f6a61; --suave: #a39c90;
+  --laranja: #e8702a; --laranja-esc: #c0561c; --wa: #1f9e52;
+  --f-tit: 'Big Shoulders Display', 'Arial Narrow', sans-serif;
+  --f-txt: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --f-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --ease: cubic-bezier(.22,.61,.36,1);
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; font-family: var(--f-txt); color: var(--tinta2); background: var(--creme); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+ul { margin: 0; padding: 0; list-style: none; }
+:focus-visible { outline: 3px solid var(--laranja); outline-offset: 3px; }
+
+/* ---------- fundo: o anel de 72h do logo, como textura (decorativo) ---------- */
+.fundo { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+.fundo svg { position: absolute; width: 760px; height: 760px; left: 50%; top: -250px; transform: translateX(-50%); }
+.fundo circle { fill: none; stroke: var(--tinta); opacity: .06; }
+.fundo .arco { stroke: var(--laranja); opacity: .22; stroke-linecap: round; animation: gira 120s linear infinite; transform-origin: 380px 380px; }
+@keyframes gira { to { transform: rotate(360deg); } }
+
+/* ---------- coluna única, pensada para o celular ---------- */
+.lk { position: relative; z-index: 1; width: min(100% - 32px, 420px); margin: 0 auto;
+  padding: max(32px, env(safe-area-inset-top)) 0 max(40px, env(safe-area-inset-bottom)); }
+
+/* ---------- cabeçalho ---------- */
+.lk__head { text-align: center; }
+.lk__logo { display: inline-block; }
+.lk__logo img { height: 52px; width: auto; margin: 0 auto; }
+.lk__selo { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; padding: 7px 14px; border-radius: 999px;
+  background: var(--branco); border: 1px solid var(--linha); box-shadow: 0 2px 10px rgba(22,21,19,.06);
+  font-family: var(--f-mono); font-size: .68rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--tinta); }
+.lk__ponto { width: 8px; height: 8px; border-radius: 50%; background: var(--laranja); flex: none; animation: pulso 2s infinite; }
+@keyframes pulso { 0% { box-shadow: 0 0 0 0 rgba(232,112,42,.6); } 70% { box-shadow: 0 0 0 9px rgba(232,112,42,0); } 100% { box-shadow: 0 0 0 0 rgba(232,112,42,0); } }
+.lk__h1 { margin: 20px 0 0; font-family: var(--f-tit); font-weight: 900; font-size: clamp(2.2rem, 10vw, 2.75rem); line-height: 1; color: var(--tinta); }
+.lk__h1 em { font-style: normal; color: var(--laranja); display: block; }
+.lk__sub { margin: 12px auto 0; max-width: 34ch; font-size: .97rem; line-height: 1.5; color: var(--muted); }
+.lk__nums { display: flex; margin-top: 20px; padding: 13px 0; border-top: 1px solid var(--linha); border-bottom: 1px solid var(--linha); }
+.lk__nums li { flex: 1; display: flex; flex-direction: column; gap: 3px; }
+.lk__nums b { font-family: var(--f-tit); font-weight: 900; font-size: 1.7rem; line-height: 1; color: var(--tinta); }
+.lk__nums span { font-size: .72rem; color: var(--muted); }
+
+/* ---------- contador (prazo real, o mesmo do site) ---------- */
+.cd { margin-top: 22px; padding: 14px 16px 16px; border-radius: 16px; background: var(--tinta); color: #d9d2c5; text-align: center;
+  box-shadow: 0 10px 28px rgba(22,21,19,.18); }
+.cd__t { margin: 0 0 8px; font-family: var(--f-mono); font-size: .7rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--laranja); }
+.cd__nums { display: flex; justify-content: center; align-items: flex-start; gap: 6px; }
+.cd__nums span { display: flex; flex-direction: column; align-items: center; min-width: 64px; font-size: .68rem; color: var(--suave); }
+.cd__nums b { font-family: var(--f-tit); font-weight: 900; font-size: 2.4rem; line-height: 1; color: var(--creme); font-variant-numeric: tabular-nums; }
+.cd__nums i { font-style: normal; font-family: var(--f-tit); font-weight: 900; font-size: 2rem; line-height: 1.05; color: #4a463f; }
+.cd__preco { margin: 10px 0 0; padding-top: 10px; border-top: 1px solid #34312c; font-size: .85rem; color: var(--suave); }
+.cd__preco strong { font-family: var(--f-tit); font-weight: 900; font-size: 1.5rem; color: var(--creme); vertical-align: -2px; margin-left: 2px; }
+
+/* ---------- botões estilo linktree ---------- */
+.lk__links { display: flex; flex-direction: column; gap: 10px; margin-top: 22px; }
+.lk__btn { display: flex; align-items: center; gap: 13px; min-height: 68px; padding: 13px 15px; border-radius: 15px;
+  background: var(--branco); border: 1px solid var(--linha); box-shadow: 0 2px 10px rgba(22,21,19,.05);
+  transition: transform .18s var(--ease), box-shadow .18s var(--ease); -webkit-tap-highlight-color: transparent; }
+.lk__btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(22,21,19,.1); }
+.lk__btn:active { transform: scale(.985); }
+.lk__ic { flex: none; display: grid; place-items: center; width: 42px; height: 42px; border-radius: 11px; background: var(--creme); color: var(--laranja-esc); }
+.lk__ic svg { width: 21px; height: 21px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.lk__ic .cheio { fill: currentColor; stroke: none; }
+.lk__txt { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; text-align: left; }
+.lk__txt b { font-size: 1rem; font-weight: 700; line-height: 1.2; color: var(--tinta); }
+.lk__txt small { font-size: .78rem; line-height: 1.3; color: var(--muted); }
+.lk__go { flex: none; width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; opacity: .35; transition: .18s var(--ease); }
+.lk__btn:hover .lk__go { opacity: .9; transform: translateX(2px); }
+/* principal: laranja da marca */
+.lk__btn--pri { background: var(--laranja); border-color: transparent; box-shadow: 0 10px 26px rgba(232,112,42,.35); }
+.lk__btn--pri:hover { background: var(--laranja-esc); box-shadow: 0 14px 30px rgba(192,86,28,.35); }
+.lk__btn--pri .lk__ic { background: rgba(255,255,255,.2); color: #fff; }
+.lk__btn--pri .lk__txt b { color: #fff; font-size: 1.08rem; }
+.lk__btn--pri .lk__txt small { color: rgba(255,255,255,.88); }
+.lk__btn--pri .lk__go { color: #fff; opacity: .9; }
+/* WhatsApp: verde escurecido para manter contraste com o texto branco */
+.lk__btn--wa { background: var(--wa); border-color: transparent; }
+.lk__btn--wa .lk__ic { background: rgba(255,255,255,.18); color: #fff; }
+.lk__btn--wa .lk__txt b { color: #fff; }
+.lk__btn--wa .lk__txt small { color: rgba(255,255,255,.88); }
+.lk__btn--wa .lk__go { color: #fff; opacity: .85; }
+
+/* ---------- cartão do manual (resumo do conteúdo) ---------- */
+.lk__h2 { margin: 32px 0 0; font-family: var(--f-mono); font-size: .7rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); text-align: center; }
+.card { margin-top: 12px; overflow: hidden; border-radius: 16px; background: var(--branco); border: 1px solid var(--linha); box-shadow: 0 2px 12px rgba(22,21,19,.06); }
+.card__topo { display: flex; gap: 14px; align-items: center; padding: 16px 16px 4px; }
+.card__capa { flex: none; width: 92px; height: auto; aspect-ratio: 480 / 678; border-radius: 4px; box-shadow: 0 8px 18px rgba(22,21,19,.25); transform: rotate(-2deg); }
+.card__t { margin: 0; font-family: var(--f-tit); font-weight: 900; font-size: 1.45rem; line-height: 1.02; color: var(--tinta); }
+.card__s { margin: 6px 0 0; font-size: .82rem; line-height: 1.4; color: var(--muted); }
+.card__lista { padding: 8px 16px 4px; }
+.card__lista li { display: flex; gap: 10px; align-items: flex-start; padding: 9px 0; border-top: 1px dashed rgba(22,21,19,.14); font-size: .88rem; line-height: 1.42; }
+.card__lista li:first-child { border-top: 0; }
+.card__lista li::before { content: ''; flex: none; width: 18px; height: 18px; margin-top: 1px; border-radius: 50%; background: var(--laranja)
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center / 11px no-repeat; }
+.card__lista strong { color: var(--tinta); }
+.card__go { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 16px 16px; padding: 14px; border-radius: 12px;
+  background: var(--laranja); color: #fff; font-weight: 700; font-size: 1rem; transition: background .18s var(--ease); }
+.card__go:hover { background: var(--laranja-esc); }
+.card__go svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.card__garantia { margin: -6px 16px 16px; text-align: center; font-size: .74rem; color: var(--muted); }
+
+/* ---------- rodapé ---------- */
+.lk__foot { margin-top: 30px; text-align: center; font-size: .74rem; color: var(--muted); }
+.lk__foot p { margin: 0 0 6px; }
+.lk__foot a { text-decoration: underline; text-underline-offset: 2px; }
+.lk__foot .sm { opacity: .8; font-size: .68rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  .fundo .arco, .lk__ponto { animation: none; }
+  .lk__btn, .lk__go { transition: none; }
+  .lk__btn:hover { transform: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="fundo" aria-hidden="true">
+  <svg viewBox="0 0 760 760">
+    <circle cx="380" cy="380" r="370" stroke-width="1"/>
+    <circle cx="380" cy="380" r="300" stroke-width="1"/>
+    <circle cx="380" cy="380" r="230" stroke-width="1"/>
+    <circle class="arco" cx="380" cy="380" r="300" stroke-width="3" stroke-dasharray="1414 471"/>
+  </svg>
+</div>
+
+<main class="lk">
+
+  <header class="lk__head">
+    <a class="lk__logo" href="./?utm_source=instagram&amp;utm_medium=bio&amp;utm_campaign=link" aria-label="72 Horas, página inicial">
+      <img src="assets/img/logo-horizontal-claro.svg" alt="72 Horas: O Manual da Família Preparada" width="379" height="120">
+    </a>
+    <br>
+    <p class="lk__selo"><span class="lk__ponto"></span>Defesa Civil · orientação de 6/11/2026</p>
+    <h1 class="lk__h1">Sua família preparada <em>para as primeiras 72 horas.</em></h1>
+    <p class="lk__sub">O que ter em casa e o que fazer, hora por hora, em um apagão, enchente ou colapso.</p>
+    <ul class="lk__nums">
+      <li><b>91</b><span>páginas</span></li>
+      <li><b>12</b><span>capítulos</span></li>
+      <li><b>3</b><span>bônus</span></li>
+    </ul>
+  </header>
+
+  <div class="cd" id="contador" hidden>
+    <p class="cd__t">O preço de lançamento termina em</p>
+    <div class="cd__nums" role="timer" aria-live="off">
+      <span><b id="cd-h">72</b>horas</span><i>:</i><span><b id="cd-m">00</b>min</span><i>:</i><span><b id="cd-s">00</b>seg</span>
+    </div>
+    <p class="cd__preco"><span id="preco-de">de <s>R$ 59,90</s> por</span> R$ <strong data-preco>39,90</strong></p>
+  </div>
+
+  <nav class="lk__links" aria-label="Links">
+    <a class="lk__btn lk__btn--pri" href="./?utm_source=instagram&amp;utm_medium=bio&amp;utm_campaign=link#oferta">
+      <span class="lk__ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4.5h6a2 2 0 0 1 2 2V20a1.5 1.5 0 0 0-1.5-1.5H4z"/><path d="M20 4.5h-6a2 2 0 0 0-2 2V20a1.5 1.5 0 0 1 1.5-1.5H20z"/></svg></span>
+      <span class="lk__txt"><b>Quero o manual</b><small>Manual + 3 bônus por R$ <span data-preco>39,90</span> · entrega imediata</small></span>
+      <svg class="lk__go" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+
+    <a class="lk__btn" href="./?utm_source=instagram&amp;utm_medium=bio&amp;utm_campaign=link#lista">
+      <span class="lk__ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="3.5" width="16" height="17" rx="2.5"/><path d="m8 9 1.5 1.5L12 8M8 15l1.5 1.5L12 14M14.5 9.5H16M14.5 15.5H16"/></svg></span>
+      <span class="lk__txt"><b>Lista grátis do kit de 72h</b><small>Marque o que você já tem em casa</small></span>
+      <svg class="lk__go" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+
+    <a class="lk__btn" href="./?utm_source=instagram&amp;utm_medium=bio&amp;utm_campaign=link#agua">
+      <span class="lk__ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3.5s-6 6.6-6 11a6 6 0 0 0 12 0c0-4.4-6-11-6-11Z"/><path d="M9.5 15a2.5 2.5 0 0 0 2.5 2.5"/></svg></span>
+      <span class="lk__txt"><b>Calculadora de água</b><small>Quantos litros a sua família precisa</small></span>
+      <svg class="lk__go" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+
+    <a class="lk__btn lk__btn--wa" href="https://wa.me/5548991657775?text=Ol%C3%A1!%20Vim%20pelo%20Instagram%20e%20tenho%20uma%20d%C3%BAvida%20sobre%20o%20manual%2072%20Horas." target="_blank" rel="noopener">
+      <span class="lk__ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="cheio" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20Zm4.4-6c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-1.9-1.2 7.3 7.3 0 0 1-1.4-1.7c-.1-.2 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5 0-.2 0-.3 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1 0 1.2.9 2.4 1 2.6.1.2 1.7 2.7 4.2 3.8.6.3 1 .4 1.4.5.6.2 1.1.2 1.5.1.5-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1Z"/></svg></span>
+      <span class="lk__txt"><b>Tirar dúvidas no WhatsApp</b><small>Atendimento direto com a equipe</small></span>
+      <svg class="lk__go" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </nav>
+
+  <h2 class="lk__h2">O que tem no manual</h2>
+  <section class="card" aria-label="Resumo do manual">
+    <div class="card__topo">
+      <img class="card__capa" src="assets/img/manual-capa-p.webp" alt="Capa do manual 72 Horas" width="480" height="678" loading="lazy">
+      <div>
+        <p class="card__t">72 Horas: O Manual da Família Preparada</p>
+        <p class="card__s">Manual em PDF para montar o kit recomendado pela Defesa Civil, com o porquê, a quantidade certa e o jeito de guardar cada item.</p>
+      </div>
+    </div>
+    <ul class="card__lista">
+      <li><span><strong>O kit completo</strong>: água, comida, luz, remédios, documentos e dinheiro vivo</span></li>
+      <li><span><strong>Hora por hora</strong>: o que fazer nas primeiras 72 horas de um apagão ou enchente</span></li>
+      <li><span><strong>As 3 mochilas</strong>: kit do dia a dia, mochila de evacuação e kit do carro</span></li>
+      <li><span><strong>3 bônus</strong>: Plano Familiar, Checklists das 3 Mochilas e Guia de Bolso</span></li>
+    </ul>
+    <a class="card__go" href="./?utm_source=instagram&amp;utm_medium=bio&amp;utm_campaign=link-card#oferta">
+      Quero o manual
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+    <p class="card__garantia">Pix, cartão ou boleto · Garantia de 7 dias</p>
+  </section>
+
+  <footer class="lk__foot">
+    <p><a href="./?utm_source=instagram&amp;utm_medium=bio&amp;utm_campaign=link">sobrevivencia72h.com.br</a></p>
+    <p class="sm"><a href="politica-de-privacidade.html">Privacidade</a> · <a href="termos-de-uso.html">Termos de uso</a></p>
+    <p class="sm">F&amp;F2 SOLUÇÕES LTDA (Freela In Home) · CNPJ 31.703.023/0001-96</p>
+  </footer>
+</main>
+
+<script>
+/* Mesmo prazo real do site: preço e fim da oferta vêm de api/oferta.php. */
+(function () {
+  'use strict';
+  var box = document.getElementById('contador');
+  function preco(v) {
+    Array.prototype.forEach.call(document.querySelectorAll('[data-preco]'), function (el) { el.textContent = v; });
+    document.getElementById('preco-de').hidden = v === '59,90';
+  }
+  function dois(n) { return String(n).padStart(2, '0'); }
+  fetch('api/oferta.php', { cache: 'no-store' })
+    .then(function (r) { if (!r.ok) throw 0; return r.json(); })
+    .then(function (d) {
+      preco(String(d.preco).replace('.', ','));
+      if (!d.fim) return;
+      var fim = d.fim * 1000;
+      var ajuste = d.agora ? d.agora * 1000 - Date.now() : 0; /* corrige relógio errado do celular */
+      box.hidden = false;
+      (function tick() {
+        var resta = fim - (Date.now() + ajuste);
+        if (resta <= 0) { box.hidden = true; preco('59,90'); return; }
+        document.getElementById('cd-h').textContent = dois(Math.floor(resta / 3600000));
+        document.getElementById('cd-m').textContent = dois(Math.floor(resta % 3600000 / 60000));
+        document.getElementById('cd-s').textContent = dois(Math.floor(resta % 60000 / 1000));
+        setTimeout(tick, 1000);
+      })();
+    })
+    .catch(function () { /* sem PHP (prévia): mantém o preço do HTML e o contador escondido */ });
+})();
+</script>
+</body>
+</html>
