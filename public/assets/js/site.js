@@ -37,8 +37,9 @@
 
   /* ---------- oferta: preço e prazo vêm do servidor (prazo real) ---------- */
   var urlParams = new URLSearchParams(window.location.search);
-  var promoHash = urlParams.get('p') || urlParams.get('promo') || store.get('s72_promo') || '';
-  if (urlParams.get('p') || urlParams.get('promo')) {
+  var pathSeg = window.location.pathname.replace(/^\/|\/$/g, '');
+  var promoHash = urlParams.get('p') || urlParams.get('promo') || (pathSeg.length >= 6 && pathSeg !== 'link' && pathSeg !== 'index.html' ? pathSeg : '') || store.get('s72_promo') || '';
+  if (urlParams.get('p') || urlParams.get('promo') || (pathSeg.length >= 6 && pathSeg !== 'link' && pathSeg !== 'index.html')) {
     store.set('s72_promo', promoHash);
   }
   var oferta = { preco: '39,90', fim: null, promo: false };

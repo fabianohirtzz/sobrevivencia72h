@@ -7,8 +7,8 @@ RewriteCond %{HTTP_HOST} ^www\. [NC]
 RewriteRule ^ https://sobrevivencia72h.com.br%{REQUEST_URI} [L,R=301]
 # página de links da bio do Instagram: sobrevivencia72h.com.br/link
 RewriteRule ^link/?$ link.html [L]
-# atalho promocional com hash aleatória: /p72x9k2m -> ?p=p72x9k2m
-RewriteRule ^p72x9k2m/?$ index.html?p=p72x9k2m [QSA,L]
+# atalho promocional com hash aleatória: /p72x9k2m -> /?p=p72x9k2m
+RewriteRule ^p72x9k2m/?$ /?p=p72x9k2m [R=302,L]
 
 <IfModule mod_headers.c>
   Header always set X-Content-Type-Options "nosniff"
