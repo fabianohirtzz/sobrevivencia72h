@@ -36,7 +36,7 @@ try {
         'billingType'       => 'UNDEFINED',
         'value'             => $o['preco'],
         'dueDate'           => date('Y-m-d', strtotime('+2 days')),
-        'description'       => '72 Horas: O Manual da Família Preparada + 3 bônus (PDF)',
+        'description'       => '72 Horas: O Manual da Família Preparada + 4 bônus (PDF)',
         'externalReference' => $ref,
         // zera o padrão da conta Asaas (desconto/juros/multa): o preço é sempre o valor exato da página
         'discount'          => ['value' => 0, 'dueDateLimitDays' => 0, 'type' => 'FIXED'],

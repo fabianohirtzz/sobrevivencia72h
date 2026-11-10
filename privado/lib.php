@@ -99,6 +99,7 @@ const ARQUIVOS = [
     2 => ['arquivo' => '72-Horas-Bonus-1-Plano-Familiar.pdf', 'nome' => 'Bônus 1 · Plano Familiar de 72 Horas'],
     3 => ['arquivo' => '72-Horas-Bonus-2-Checklists-das-3-Mochilas.pdf', 'nome' => 'Bônus 2 · Checklists das 3 Mochilas'],
     4 => ['arquivo' => '72-Horas-Bonus-3-Guia-de-Bolso.pdf', 'nome' => 'Bônus 3 · Guia de Bolso das 72 Horas'],
+    5 => ['arquivo' => '72-Horas-Bonus-4-Cozinha-de-Emergencia.pdf', 'nome' => 'Bônus 4 · Cozinha de Emergência (10 receitas)'],
 ];
 
 /* ---------- e-mail (SMTP simples com SSL; cai para mail() se não houver SMTP) ---------- */
@@ -150,14 +151,14 @@ function email_entrega(array $pedido): bool {
         . '<div style="background:#161513;padding:24px;border-radius:12px 12px 0 0"><span style="color:#e8702a;font-size:28px;font-weight:900">72 HORAS</span>'
         . '<br><span style="color:#f3eee4;font-size:13px;letter-spacing:2px">MANUAL DA FAMÍLIA PREPARADA</span></div>'
         . '<div style="background:#f7f3ec;padding:28px;border-radius:0 0 12px 12px">'
-        . "<p>Olá, $nome!</p><p>Seu pagamento foi confirmado. Obrigado pela confiança. O seu manual e os 3 bônus já estão disponíveis:</p>"
+        . "<p>Olá, $nome!</p><p>Seu pagamento foi confirmado. Obrigado pela confiança. O seu manual e os 4 bônus já estão disponíveis:</p>"
         . '<p style="text-align:center;margin:28px 0"><a href="' . $link . '" style="background:#e8702a;color:#fff;text-decoration:none;font-weight:bold;padding:14px 28px;border-radius:999px;display:inline-block">Baixar o manual e os bônus</a></p>'
-        . '<p style="font-size:14px">O link vale por ' . (int) cfg('DIAS_DOWNLOAD', 30) . ' dias. Baixe os 4 arquivos e guarde uma cópia no celular e outra impressa.</p>'
+        . '<p style="font-size:14px">O link vale por ' . (int) cfg('DIAS_DOWNLOAD', 30) . ' dias. Baixe os 5 arquivos e guarde uma cópia no celular e outra impressa.</p>'
         . '<p style="font-size:14px"><strong>Por onde começar:</strong> leia a Abertura e faça a primeira caixa "Faça agora" ainda hoje. Leva 2 minutos.</p>'
         . '<p style="font-size:13px;color:#6f6a61">Dúvidas: responda este e-mail ou chame no WhatsApp (48) 99165-7775.<br>Garantia de 7 dias: se não gostar, devolvemos 100% do valor.</p>'
         . '</div><p style="font-size:11px;color:#a39c90;text-align:center;margin:16px 8px">Você recebeu este e-mail porque comprou o manual 72 Horas em sobrevivencia72h.com.br.<br>'
         . 'F&amp;F2 SOLUÇÕES LTDA (Freela In Home) · CNPJ 31.703.023/0001-96</p></div>';
-    $texto = "Olá, $nome!\n\nSeu pagamento foi confirmado. Baixe o manual e os 3 bônus aqui:\n$link\n\nO link vale por "
+    $texto = "Olá, $nome!\n\nSeu pagamento foi confirmado. Baixe o manual e os 4 bônus aqui:\n$link\n\nO link vale por "
         . (int) cfg('DIAS_DOWNLOAD', 30) . " dias.\nDúvidas: responda este e-mail ou WhatsApp (48) 99165-7775.\n\n"
         . "Você recebeu este e-mail porque comprou o manual 72 Horas em sobrevivencia72h.com.br.\nF&F2 SOLUÇÕES LTDA (Freela In Home) · CNPJ 31.703.023/0001-96";
     return email_envia($pedido['email'], 'Seu manual 72 Horas chegou', $html, $texto);

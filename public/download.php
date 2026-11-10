@@ -38,7 +38,7 @@ if ($ok && isset($_GET['f'])) {
 <?php if ($ok): ?>
   <p class="rotulo">Acesso liberado</p>
   <h1>Olá, <?= htmlspecialchars(explode(' ', $pedido['nome'])[0]) ?>. Aqui estão os seus arquivos.</h1>
-  <p>Baixe os 4 PDFs e guarde uma cópia no celular e outra impressa. Comece pela Abertura do manual e faça a primeira caixa "Faça agora" ainda hoje.</p>
+  <p>Baixe os 5 PDFs e guarde uma cópia no celular e outra impressa. Comece pela Abertura do manual e faça a primeira caixa "Faça agora" ainda hoje.</p>
   <ul class="arquivos">
     <?php foreach (ARQUIVOS as $n => $a): ?>
       <li><a href="download.php?t=<?= urlencode($t) ?>&amp;f=<?= $n ?>"><?= htmlspecialchars($a['nome']) ?> <span>BAIXAR PDF</span></a></li>
