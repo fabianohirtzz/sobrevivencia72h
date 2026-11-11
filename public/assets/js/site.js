@@ -56,7 +56,7 @@
     box.hidden = false;
     function tick() {
       var resta = Math.max(0, oferta.fim - Date.now());
-      if (resta <= 0) { box.hidden = true; oferta.preco = '59,90'; oferta.promo = false; aplicaPreco(); return; }
+      if (resta <= 0) { box.hidden = true; carregaOferta(); return; }
       var h = Math.floor(resta / 3600000), m = Math.floor(resta % 3600000 / 60000), s = Math.floor(resta % 60000 / 1000);
       $('#cd-h').textContent = String(h).padStart(2, '0');
       $('#cd-m').textContent = String(m).padStart(2, '0');
@@ -66,7 +66,8 @@
     tick();
   }
   var ofertaUrl = 'api/oferta.php' + (promoHash ? '?p=' + encodeURIComponent(promoHash) : '');
-  fetch(ofertaUrl, { cache: 'no-store' })
+  function carregaOferta() {
+  fetch(ofertaUrl + (ofertaUrl.indexOf('?') < 0 ? '?' : '&') + 't=' + Date.now(), { cache: 'no-store' })
     .then(function (r) { if (!r.ok) throw 0; return r.json(); })
     .then(function (d) {
       oferta.preco = moeda(d.preco);
@@ -76,6 +77,8 @@
       contador();
     })
     .catch(function () { /* sem PHP (prévia): mantém o preço do HTML e esconde o contador */ });
+  }
+  carregaOferta();
 
   /* ---------- checkout ---------- */
   var dlg = $('#checkout');

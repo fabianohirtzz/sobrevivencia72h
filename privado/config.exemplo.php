@@ -13,6 +13,7 @@ return [
     'PROMO_HASH'   => 'p72x9k2m',                // hash aleatória do link promocional (?p=p72x9k2m)
     'PRE_LANCAMENTO' => true,                    // true = preço de oferta SEM contador (antes do lançamento)
     'OFERTA_FIM'   => '2026-11-10 20:00:00',       // no lançamento: data/hora do lançamento + 72h (horário de Brasília)
+    'MANTER_OFERTA_APOS_PRAZO' => true,          // true = depois do prazo continua 'de 59,90 por 39,90', sem contador; false = passa a cobrar o preço cheio
 
     // ---------- Site e entrega
     'SITE_URL'      => 'https://sobrevivencia72h.com.br',

@@ -288,7 +288,7 @@ ul { margin: 0; padding: 0; list-style: none; }
       box.hidden = false;
       (function tick() {
         var resta = fim - (Date.now() + ajuste);
-        if (resta <= 0) { box.hidden = true; preco('59,90'); return; }
+        if (resta <= 0) { box.hidden = true; fetch(ofertaUrl + (ofertaUrl.indexOf('?') < 0 ? '?' : '&') + 't=' + Date.now(), { cache: 'no-store' }).then(function (r) { return r.json(); }).then(function (x) { preco(String(x.preco).replace('.', ',')); }).catch(function () {}); return; }
         document.getElementById('cd-h').textContent = dois(Math.floor(resta / 3600000));
         document.getElementById('cd-m').textContent = dois(Math.floor(resta % 3600000 / 60000));
         document.getElementById('cd-s').textContent = dois(Math.floor(resta % 60000 / 1000));

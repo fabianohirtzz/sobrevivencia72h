@@ -32,7 +32,8 @@ function oferta(?string $promo = null): array {
     }
 
     if (cfg('PRE_LANCAMENTO')) return ['ativa' => true, 'preco' => (float) cfg('PRECO_OFERTA'), 'fim' => null, 'promo' => false];
-    $preco = $ativa ? (float) cfg('PRECO_OFERTA') : (float) cfg('PRECO_CHEIO');
+    // Fim do prazo: por padrão mantém o preço de oferta ("de 59,90 por 39,90"), só sem contador.
+    $preco = ($ativa || cfg('MANTER_OFERTA_APOS_PRAZO', true)) ? (float) cfg('PRECO_OFERTA') : (float) cfg('PRECO_CHEIO');
     return ['ativa' => $ativa, 'preco' => $preco, 'fim' => $ativa ? $fim : null, 'promo' => false];
 }
 
