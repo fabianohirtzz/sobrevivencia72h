@@ -45,5 +45,6 @@ recebe lançamento + 72h; depois disso página e checkout cobram R$ 59,90 de fat
 - 2026-11-08 00:26: LANÇAMENTO. Countdown ligado, oferta R$ 39,90 até 2026-11-11 00:26 (Brasília); depois cobra R$ 59,90 sozinho.
 - 2026-11-09 14:06: countdown REINICIADO (nova janela de 72h): OFERTA_FIM = 2026-11-12 14:06. Criada `public/link.html`
   (link da bio do Instagram, URL /link, noindex, estilo linktree mobile): botões, resumo, mesmo contador real via api/oferta.php, botão "Quero o manual" para /#oferta (UTM instagram/bio).
+- 2026-11-11 11:38: countdown reiniciado para o parceiro (promo R$ 29,90): OFERTA_FIM = 2026-11-14 11:38. MANTER_OFERTA_APOS_PRAZO=true: após o prazo segue "de 59,90 por 39,90" sem contador.
 - PRÓXIMO: no aviso de lançamento, PRE_LANCAMENTO=false e OFERTA_FIM = lançamento + 72h em privado/config.php e publicar
   (`python deploy.py --so-config`, com FTP_SENHA no ambiente). Prévia noindex: branch gh-pages (GitHub Pages).
